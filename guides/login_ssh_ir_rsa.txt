@@ -1,0 +1,14 @@
+###### LINUX ###### 
+
+# copy id_rsa from host and pase it on local machine
+> chmod 600 id_rsa
+> ssh -i id_rsa user@host
+
+###### WINDOWS ###### 
+
+> ssh-keygen
+
+-- powershell --
+> type $env:USERPROFILE\.ssh\id_rsa.pub | ssh pi@192.168.0.18 "cat >> .ssh/authorized_keys"
+> type C:\Users\santi\.ssh\ir_rsa.pub | ssh pi@192.168.0.18 "cat >> ~/.ssh/authorized_keys"
+

@@ -1,0 +1,24 @@
+[INSTALL SAMBA NAS]
+
+sudo apt update
+sudo apt upgrade
+
+sudo apt install samba samba-common
+
+> sudo nano /etc/samba/smb.conf
+
+	[MyMedia]
+	path = /media/pi/MyExternalDrive/
+	writeable = yes
+	create mask = 0775
+	directory mask = 0775
+	public=no
+
+> sudo smbpasswd -a "username" > (enter password)
+
+[you can add other users with 'sudo adduser nas-user' and then do 'sudo smbpasswd -a nas-user']
+
+
+sudo systemctl restart smbd
+
+[access in windows explorer ex:. '\\192.168.0.18\nas']

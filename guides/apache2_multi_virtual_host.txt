@@ -1,0 +1,40 @@
+[Apache2 virtual hosts]
+
+-Make directory for each site
+	sudo mkdir -p /var/www/domain-name/public_html
+
+-Set folder permissions
+	sudo chmod -R 755 /var/www
+
+-Create config for each site
+	sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/domain-name.conf
+
+-Edit config for each site
+	sudo nano /etc/apache2/sites-available/domain-name.conf
+
+	<VirtualHost *:80>
+	ServerAdmin admin@example.com
+	ServerName domain.com
+	ServerAlias www.domain.com
+	DocumentRoot /var/www/domain-name/public_html
+	</VirtualHost>
+
+-Disable default config and enable each site config
+	sudo a2dissite 000-default.conf (apache2 disable site)
+
+	sudo a2ensite domain-name.conf (apache2 enable site)
+
+-Restart apache2
+	sudo systemctl restart apache2
+
+
+
+
+
+-Extra info:
+
+set ProFTPd DefaultRoot to /var/www to have access to all sites
+> sudo nano /etc/proftpd/proftpd.conf
+
+and give permissions to /var/www 
+> sudo chmod -R -f 777 /var/www

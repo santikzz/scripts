@@ -1,0 +1,8 @@
+nano /etc/proxychains.conf
+
+dynamic_chain
+proxy_dns
+
+service tor start
+
+proxychains firefox url.com

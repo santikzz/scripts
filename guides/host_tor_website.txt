@@ -1,0 +1,28 @@
+#install tor
+	sudo apt-get install tor
+
+#edit tor config
+	sudo nano /etc/tor/torrc
+
+	#uncomment "HiddenServiceDir" and "HiddenServicePort"
+
+#restart tor service
+	sudo service tor restart
+
+#see tor link
+	sudo cat /var/lib/tor/hidden_service/hostname
+
+#install nginx
+	sudo apt-get install nginx
+	sudo service nginx start
+
+#how to secure
+	- edit nginx config
+	sudo nano /etc/nginx/nginx.conf
+
+	#uncomment "server_tokens off;" and "server_name_in_redirect off;"
+	#add "port_in_redirect off;" 
+
+	sudo service nginx restart
+
+#add content to /var/www/html/
